@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+{% block content %}
+    <div id="content">
+        <div class="container">
+
+            <div class="col-sm-12">
+                {% include 'partials/_breadcrumb.html' %}
+            </div>
+
+            <div class="col-sm-9" id="blog-post">
+
+
+                <div class="box">
+
+                    <h1>{{ post.title | title }}</h1>
+                    <p class="author-date">By <a href="#">{% if post.user.first_name and post.user.last_name is not null %}
+                                   {{ post.user.first_name }} {{ post.user.last_name }}
+                            {% else %}{{ post.user }}
+                    {% endif %}</a> | {{ post.create|date:"F j, Y"}}</p>
+                    <p class="lead">{{ post.sub_title }}</p>
+
+                    <div id="post-content">
+                        <p>
+                            <img src="{{ post.image.url }}" class="img-responsive" alt="{{ post.title }}">
+                        </p>
+
+                        <p>{{ post.description }}</p>
+
+                    </div>
+                    <!-- /#post-content -->
+
+                    {% include 'blog/inc/comments.html' %}
+
+
+                </div>
+                <!-- /.box -->
+            </div>
+            <!-- /#blog-post -->
+            {% include 'blog/inc/right_sidebar.html' %}
+
+        </div>
+        <!-- /.container -->
+    </div>
+{% endblock %}
