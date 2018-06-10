@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Advantages, TopSlider
+from .models import Advantages, TopSlider, GetInspired
 
 
 class TopSliderAdmin(admin.ModelAdmin):
@@ -14,3 +14,10 @@ class AdvantagesAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Advantages, AdvantagesAdmin)
+
+
+class GetInspiredAdmin(admin.ModelAdmin):
+    list_display = ('name', 'status', 'create', 'update')
+
+
+admin.site.register(GetInspired, GetInspiredAdmin)

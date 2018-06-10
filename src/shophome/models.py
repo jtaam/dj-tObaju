@@ -35,3 +35,22 @@ class Advantages(models.Model):
     class Meta:
         verbose_name = 'advantage'
         verbose_name_plural = 'advantages'
+
+
+class GetInspired(models.Model):
+    STATUS = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+    )
+    name = models.CharField(max_length=250, blank=True, null=True)
+    image = models.ImageField(upload_to='homepage/get-inspired/%Y/%m/%d/')
+    create = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+    status = models.CharField(choices=STATUS, default='draft', max_length=20)
+
+    class Meta:
+        verbose_name = 'Get Inspired Image'
+        verbose_name_plural = 'Get Inspired Images'
+
+    def __str__(self):
+        return self.name

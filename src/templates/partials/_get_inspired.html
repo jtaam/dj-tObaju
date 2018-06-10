@@ -5,21 +5,15 @@
             <h3>Get Inspired</h3>
             <p class="lead">Get the inspiration from our world class designers</p>
             <div id="get-inspired" class="owl-carousel owl-theme">
-                <div class="item">
-                    <a href="#">
-                        <img src="{% static 'img/getinspired1.jpg' %}" alt="Get inspired" class="img-responsive">
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#">
-                        <img src="{% static 'img/getinspired2.jpg' %}" alt="Get inspired" class="img-responsive">
-                    </a>
-                </div>
-                <div class="item">
-                    <a href="#">
-                        <img src="{% static 'img/getinspired3.jpg' %}" alt="Get inspired" class="img-responsive">
-                    </a>
-                </div>
+
+                {% for inspire in inspires %}
+                    <div class="item">
+                        <a href="#">
+                            <img src="{{ inspire.image.url }}" alt="{{ inspire.name }}" class="img-responsive">
+                        </a>
+                    </div>
+                {% endfor %}
+
             </div>
         </div>
     </div>
