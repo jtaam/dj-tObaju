@@ -1,6 +1,16 @@
 from django.db import models
 
 
+class TopOffer(models.Model):
+    percentage = models.CharField(max_length=2)
+    limit = models.CharField(max_length=5)
+    create = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.percentage
+
+
 class TopSlider(models.Model):
     STATUS = (
         ('draft', 'Draft'),

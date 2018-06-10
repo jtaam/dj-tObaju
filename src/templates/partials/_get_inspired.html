@@ -8,6 +8,7 @@
 
                 {% for inspire in inspires %}
                     <div class="item">
+                        <h4 class="inspire-header">{{ inspire.name | title }}</h4>
                         <a href="#">
                             <img src="{{ inspire.image.url }}" alt="{{ inspire.name }}" class="img-responsive">
                         </a>

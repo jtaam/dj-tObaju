@@ -1,5 +1,12 @@
 from django.contrib import admin
-from .models import Advantages, TopSlider, GetInspired
+from .models import Advantages, TopSlider, GetInspired, TopOffer
+
+
+class TopOfferAdmin(admin.ModelAdmin):
+    list_display = ('percentage', 'limit', 'create', 'update')
+
+
+admin.site.register(TopOffer, TopOfferAdmin)
 
 
 class TopSliderAdmin(admin.ModelAdmin):

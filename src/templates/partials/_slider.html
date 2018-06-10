@@ -4,6 +4,7 @@
         <div id="main-slider">
             {% for slider in sliders %}
                 <div class="item">
+                    <h3 class="slider-header">{{ slider.name | upper}}</h3>
                     <img  class="img-responsive" src="{{ slider.image.url }}" alt="{{ slider.name }}">
                 </div>
             {% endfor %}
