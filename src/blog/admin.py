@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import PostCategory
+from .models import PostCategory, Post
 
 
 class PostCategoryAdmin(admin.ModelAdmin):
@@ -8,3 +8,10 @@ class PostCategoryAdmin(admin.ModelAdmin):
 
 
 admin.site.register(PostCategory, PostCategoryAdmin)
+
+
+class PostAdmin(admin.ModelAdmin):
+    list_display = ('title', 'user', 'status', 'category', 'create', 'update')
+
+
+admin.site.register(Post, PostAdmin)

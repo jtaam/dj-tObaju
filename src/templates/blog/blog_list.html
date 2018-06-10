@@ -20,55 +20,31 @@
                         semper.</p>
 
                 </div>
-
-                <div class="post">
-                    <h2><a href="post.html">Fashion now</a></h2>
-                    <p class="author-category">By <a href="#">John Slim</a> in <a href="">Fashion and style</a>
-                    </p>
-                    <hr>
-                    <p class="date-comments">
-                        <a href="post.html"><i class="fa fa-calendar-o"></i> June 20, 2013</a>
-                        <a href="post.html"><i class="fa fa-comment-o"></i> 8 Comments</a>
-                    </p>
-                    <div class="image">
-                        <a href="post.html">
-                            <img src="{% static 'img/blog2.jpg' %}" class="img-responsive" alt="Example blog post alt">
-                        </a>
+                {% for post in posts %}
+                    <div class="post">
+                        <h2><a href="post.html">{{ post.title | title }}</a></h2>
+                        <p class="author-category">By <a href="#">{% if post.user.first_name and post.user.last_name is not null %}
+                                   {{ post.user.first_name }} {{ post.user.last_name }}
+                            {% else %}{{ post.user }}
+                        {% endif %}</a> in <a
+                                href="">{{ post.category | title}}</a>
+                        </p>
+                        <hr>
+                        <p class="date-comments">
+                            <a href="post.html"><i class="fa fa-calendar-o"></i> {{ post.create|date:"F j, Y"}}</a>
+                            <a href="post.html"><i class="fa fa-comment-o"></i> 8 Comments</a>
+                        </p>
+                        <div class="image">
+                            <a href="post.html">
+                                <img src="{{ post.image.url }}" class="img-responsive" alt="{{ post.title }}">
+                            </a>
+                        </div>
+                        <p class="intro">{{ post.description|truncatechars:300 }}</p>
+                        <p class="read-more"><a href="post.html" class="btn btn-primary">Continue reading</a>
+                        </p>
                     </div>
-                    <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
-                        turpis
-                        egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu
-                        libero
-                        sit amet quam egestas semper. Aenean ultricies
-                        mi vitae est. Mauris placerat eleifend leo.</p>
-                    <p class="read-more"><a href="post.html" class="btn btn-primary">Continue reading</a>
-                    </p>
-                </div>
+                {% endfor %}
 
-
-                <div class="post">
-                    <h2><a href="post.html">Who is who - example blog post</a></h2>
-                    <p class="author-category">By <a href="#">John Slim</a> in <a href="">About Minimal</a>
-                    </p>
-                    <hr>
-                    <p class="date-comments">
-                        <a href="post.html"><i class="fa fa-calendar-o"></i> June 20, 2013</a>
-                        <a href="post.html"><i class="fa fa-comment-o"></i> 8 Comments</a>
-                    </p>
-                    <div class="image">
-                        <a href="post.html">
-                            <img src="{% static 'img/blog.jpg' %}" class="img-responsive" alt="Example blog post alt">
-                        </a>
-                    </div>
-                    <p class="intro">Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac
-                        turpis
-                        egestas. Vestibulum tortor quam, feugiat vitae, ultricies eget, tempor sit amet, ante. Donec eu
-                        libero
-                        sit amet quam egestas semper. Aenean ultricies
-                        mi vitae est. Mauris placerat eleifend leo.</p>
-                    <p class="read-more"><a href="post.html" class="btn btn-primary">Continue reading</a>
-                    </p>
-                </div>
 
                 <ul class="pager">
                     <li class="previous"><a href="#">← Older</a>
