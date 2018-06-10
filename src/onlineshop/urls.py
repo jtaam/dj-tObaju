@@ -20,6 +20,7 @@ from django.conf import settings
 
 urlpatterns = [
     url(r'', include('shophome.urls', app_name='shophome', namespace='shophome')),
+    url(r'^blog/', include('blog.urls', app_name='blog', namespace='blog')),
     url(r'^admin/', admin.site.urls),
     url(r'^products/', include('products.urls', app_name='products', namespace='products'))
 ]
