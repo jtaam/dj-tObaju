@@ -19,8 +19,8 @@ from django.views.static import serve
 from django.conf import settings
 
 urlpatterns = [
+    url(r'', include('shophome.urls', app_name='shophome', namespace='shophome')),
     url(r'^admin/', admin.site.urls),
-    url(r'^$', include('shophome.urls', app_name='shophome', namespace='shophome')),
     url(r'^products/', include('products.urls', app_name='products', namespace='products'))
 ]
 
