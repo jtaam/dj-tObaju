@@ -12,5 +12,26 @@ class TopSlider(models.Model):
     update = models.DateTimeField(auto_now=True)
     status = models.CharField(choices=STATUS, default='draft', max_length=20)
 
+    class Meta:
+        verbose_name = 'Top Slider'
+        verbose_name_plural = 'Top Slider'
+
     def __str__(self):
         return self.name
+
+
+class Advantages(models.Model):
+    STATUS = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+    )
+    title = models.CharField(max_length=250)
+    description = models.TextField()
+    icon = models.CharField(max_length=50, help_text='fa-hearts , ref: https://fontawesome.bootstrapcheatsheets.com/')
+    status = models.CharField(max_length=20, choices=STATUS, default='draft')
+    create = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'advantage'
+        verbose_name_plural = 'advantages'
