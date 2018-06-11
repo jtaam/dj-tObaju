@@ -20,17 +20,20 @@ class Brand(models.Model):
 
 
 class CategoryGroup(models.Model):
-    # GROUPS = (
-    #     ('men', 'Men'),
-    #     ('ladies', 'Ladies'),
-    #     ('kids', 'Kids')
-    # )
-    # name = models.CharField(choices=GROUPS, max_length=20, null=True)
-    # info = models.TextField(blank=True, null=True)
-    #
-    # def __str__(self):
-    #     return self.name
-    pass
+    GROUPS = (
+        ('men', 'Men'),
+        ('ladies', 'Ladies'),
+        ('kids', 'Kids')
+    )
+    name = models.CharField(choices=GROUPS, max_length=20, null=True)
+    info = models.TextField(blank=True, null=True)
+
+    class Meta:
+        verbose_name = 'Category Group'
+        verbose_name_plural = 'Category Groups'
+
+    def __str__(self):
+        return self.name
 
 
 class ProductCategory(models.Model):
@@ -53,12 +56,16 @@ class ProductCategory(models.Model):
 
 
 class Colours(models.Model):
-    # name = models.CharField(max_length=20, default='blue')
-    # color_code = models.CharField(max_length=20, help_text='visit http://w3schools.com', null=True, blank=True)
-    #
-    # def __str__(self):
-    #     return self.name
-    pass
+    name = models.CharField(max_length=20, default='blue')
+    color_code = models.CharField(max_length=20, help_text='visit https://www.w3schools.com/colors/colors_picker.asp',
+                                  null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'colour'
+        verbose_name_plural = 'colours'
+
+    def __str__(self):
+        return self.name
 
 
 class Product(models.Model):
