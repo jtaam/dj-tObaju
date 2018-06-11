@@ -3,10 +3,10 @@ from .models import Brand, ProductCategory, Colours, Product
 
 
 def products_list(request):
+    products = Product.objects.filter(status='published')
     template = 'products/products_list.html'
     context = {
-        'data': '',
-        'title': 'all products',
+        'products': products,
     }
     return render(request, template, context)
 
