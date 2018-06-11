@@ -1,6 +1,7 @@
 from django.db import models
 from django.core.urlresolvers import reverse
 from django.template.defaultfilters import slugify
+from multiselectfield import MultiSelectField
 
 
 class Brand(models.Model):
@@ -37,22 +38,25 @@ class CategoryGroup(models.Model):
 
 
 class ProductCategory(models.Model):
-    # CHOICES = (
-    #     ('draft', 'Draft'),
-    #     ('published', 'Published'),
-    # )
-    #
-    # name = models.CharField(max_length=250)
-    # cat_group = models.ForeignKey(CategoryGroup, on_delete=models.CASCADE, null=True, blank=True)
-    # image = models.ImageField(upload_to='product/category/%Y/%m/%d/', null=True, blank=True)
-    # description = models.TextField()
-    # status = models.CharField(max_length=20, choices=CHOICES, default='draft')
-    # create = models.DateTimeField(auto_now_add=True)
-    # update = models.DateTimeField(auto_now=True)
-    #
-    # def __str__(self):
-    #     return self.name
-    pass
+    CHOICES = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+    )
+
+    name = models.CharField(max_length=250)
+    cat_group = models.ForeignKey(CategoryGroup, on_delete=models.CASCADE, null=True, blank=True)
+    image = models.ImageField(upload_to='product/category/%Y/%m/%d/', null=True, blank=True)
+    description = models.TextField()
+    status = models.CharField(max_length=20, choices=CHOICES, default='draft')
+    create = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Product Category'
+        verbose_name_plural = 'Product Categories'
+
+    def __str__(self):
+        return self.name
 
 
 class Colours(models.Model):
@@ -69,4 +73,36 @@ class Colours(models.Model):
 
 
 class Product(models.Model):
-    pass
+    TAGS = (
+        ('sale', 'Sale'),
+        ('new', 'New'),
+        ('gift', 'Gift'),
+        ('stock', 'Stock'),
+    )
+    STATUS = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+    )
+    title = models.CharField(max_length=250)
+    sub_title = models.TextField(null=True, blank=True)
+    price = models.FloatField(blank=True, null=True)
+    new_price = models.FloatField(blank=True, null=True)
+    first_image = models.ImageField(upload_to='product/item/%Y/%m/%d/', null=True, blank=True)
+    second_image = models.ImageField(upload_to='product/item/%Y/%m/%d/', null=True, blank=True)
+    third_image = models.ImageField(upload_to='product/item/%Y/%m/%d/', null=True, blank=True)
+    status = models.CharField(max_length=20, choices=STATUS, default='draft')
+    tags = MultiSelectField(choices=TAGS, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    material = models.CharField(max_length=250, null=True, blank=True)
+    size = models.CharField(max_length=250, null=True, blank=True)
+    category = models.ForeignKey(ProductCategory, on_delete=models.CASCADE, null=True, blank=True)
+    colours = models.ForeignKey(Colours, on_delete=models.CASCADE, null=True, blank=True)
+    brand = models.ForeignKey(Brand, on_delete=models.CASCADE, null=True, blank=True)
+    stock = models.IntegerField(null=True, blank=True)
+    sold = models.IntegerField(null=True, blank=True)
+    create = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    def __str__(self):
+        return self.title
+
