@@ -1,0 +1,12 @@
+{% extends 'base.html' %}
+{% block title %}
+{{ brand.name }}
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1>{{ brand.name }}</h1>
+    <hr />
+    <img src="{{ brand.image.url }}" alt="{{ brand.name }}" class="img-responsive" />
+    <p>{{ brand.description }}</p>
+</div>
+{% endblock %}
