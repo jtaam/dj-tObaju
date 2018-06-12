@@ -95,3 +95,26 @@ class Faq(models.Model):
     def __str__(self):
         return self.question
 
+
+class ContactUsPage(models.Model):
+    street = models.CharField(max_length=100)
+    city = models.CharField(max_length=100, null=True, blank=True)
+    postcode = models.CharField(max_length=12, null=True, blank=True)
+    division = models.CharField(max_length=100, null=True, blank=True)
+    country = models.CharField(max_length=100, null=True, blank=True)
+    call_center_info = models.TextField(null=True, blank=True)
+    call_center_phone = models.CharField(max_length=100, null=True, blank=True)
+    electronic_support = models.TextField(null=True, blank=True)
+    electronic_email = models.EmailField(null=True, blank=True)
+    electronic_ticket_link = models.URLField(max_length=300, null=True, blank=True)
+    electronic_ticket = models.CharField(max_length=250, null=True, blank=True)
+    map_snippet = models.TextField(null=True, blank=True)
+    create = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'Contact Us'
+        verbose_name_plural = 'Contact Us Page'
+
+    def __str__(self):
+        return self.street

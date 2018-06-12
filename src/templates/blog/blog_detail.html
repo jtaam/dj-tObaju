@@ -24,7 +24,7 @@
                             <img src="{{ post.image.url }}" class="img-responsive" alt="{{ post.title }}">
                         </p>
 
-                        <p>{{ post.description }}</p>
+                        <p>{{ post.description | safe }}</p>
 
                     </div>
                     <!-- /#post-content -->

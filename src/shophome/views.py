@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import TopSlider, Advantages, GetInspired, TopOffer, Logo, Faq
+from .models import TopSlider, Advantages, GetInspired, TopOffer, Logo, Faq, ContactUsPage
 from products.models import Product, Colours, ProductCategory, Brand
 from blog.models import Post
 
@@ -46,11 +46,13 @@ def faq(request):
 
 
 def contact(request):
+    contactus = get_object_or_404(ContactUsPage)
     logo = get_object_or_404(Logo)
     offer = get_object_or_404(TopOffer)
     template = 'contact/contact.html'
     context = {
         'logo': logo,
         'offer': offer,
+        'contactus': contactus,
     }
     return render(request, template, context)

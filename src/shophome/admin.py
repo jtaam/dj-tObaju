@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Advantages, TopSlider, GetInspired, TopOffer, Logo, Faq
+from .models import Advantages, TopSlider, GetInspired, TopOffer, Logo, Faq, ContactUsPage
 
 
 class LogoAdmin(admin.ModelAdmin):
@@ -42,3 +42,10 @@ class FaqAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Faq, FaqAdmin)
+
+
+class ContactUsPageAdmin(admin.ModelAdmin):
+    list_display = ['street', 'city', 'call_center_phone']
+
+
+admin.site.register(ContactUsPage, ContactUsPageAdmin)
