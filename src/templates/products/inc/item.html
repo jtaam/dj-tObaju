@@ -4,22 +4,22 @@
         <div class="flip-container">
             <div class="flipper">
                 <div class="front">
-                    <a href="detail.html">
+                    <a href="{% url 'products:product_detail' product.id %}">
                         <img src="{{ product.first_image.url }}" alt="{{ product.title }}" class="img-responsive">
                     </a>
                 </div>
                 <div class="back">
-                    <a href="detail.html">
+                    <a href="{% url 'products:product_detail' product.id %}">
                         <img src="{{ product.second_image.url }}" alt="{{ product.sub_title|truncatechars:100 }}" class="img-responsive">
                     </a>
                 </div>
             </div>
         </div>
-        <a href="detail.html" class="invisible">
+        <a href="{% url 'products:product_detail' product.id %}" class="invisible">
             <img src="{{ product.third_image.url }}" alt="{{ product.sub_title|truncatechars:100 }}" class="img-responsive">
         </a>
         <div class="text">
-            <h3><a href="detail.html">White Blouse Armani</a></h3>
+            <h3><a href="{% url 'products:product_detail' product.id %}">White Blouse Armani</a></h3>
             <p class="price">
                 {% if product.price %}
                     <del>${{ product.price }}</del>
@@ -27,33 +27,14 @@
                 ${{ product.new_price }}
             </p>
             <p class="buttons">
-                <a href="detail.html" class="btn btn-default">View detail</a>
+                <a href="{% url 'products:product_detail' product.id %}" class="btn btn-default">View detail</a>
                 <a href="basket.html" class="btn btn-primary"><i
                         class="fa fa-shopping-cart"></i>Add to cart</a>
             </p>
         </div>
         <!-- /.text -->
-        {% if product.tags %}
-            {% for tag in product.tags %}
-                <div class="ribbon {{ tag }}">
-                    <div class="theribbon">{{ tag | upper }}</div>
-                    <div class="ribbon-background"></div>
-                </div>
-                    <!-- /.ribbon -->
-            {% endfor %}
-        {% endif %}
+        {% include 'products/inc/ribbon.html' %}
 
-{#        <div class="ribbon new">#}
-{#            <div class="theribbon">NEW</div>#}
-{#            <div class="ribbon-background"></div>#}
-{#        </div>#}
-{#        <!-- /.ribbon -->#}
-
-{#        <div class="ribbon gift">#}
-{#            <div class="theribbon">GIFT</div>#}
-{#            <div class="ribbon-background"></div>#}
-{#        </div>#}
-{#        <!-- /.ribbon -->#}
     </div>
     <!-- /.product -->
 </div>

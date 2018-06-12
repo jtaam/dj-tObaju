@@ -1,12 +1,25 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Brand, ProductCategory, Colours, Product
+from .models import Brand, ProductCategory, Colours, Product, CategoryGroup
 
 
 def products_list(request):
+    men_categories = ProductCategory.objects.all()
+    colours = Colours.objects.all()
     products = Product.objects.filter(status='published')
     template = 'products/products_list.html'
     context = {
         'products': products,
+        'men_categories': men_categories,
+        'colours': colours,
+    }
+    return render(request, template, context)
+
+
+def product_detail(request, pid):
+    product = get_object_or_404(Product, id=pid)
+    template = 'products/product_detail.html'
+    context = {
+        'product': product
     }
     return render(request, template, context)
 

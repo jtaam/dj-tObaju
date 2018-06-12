@@ -1,0 +1,9 @@
+{% if product.tags %}
+    {% for tag in product.tags %}
+        <div class="ribbon {{ tag }}">
+            <div class="theribbon">{{ tag | upper }}</div>
+            <div class="ribbon-background"></div>
+        </div>
+        <!-- /.ribbon -->
+    {% endfor %}
+{% endif %}
