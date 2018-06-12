@@ -43,3 +43,14 @@ def faq(request):
         'brands': brands,
     }
     return render(request, template, context)
+
+
+def contact(request):
+    logo = get_object_or_404(Logo)
+    offer = get_object_or_404(TopOffer)
+    template = 'contact/contact.html'
+    context = {
+        'logo': logo,
+        'offer': offer,
+    }
+    return render(request, template, context)
