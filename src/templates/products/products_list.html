@@ -25,7 +25,12 @@
 
                 <div class="col-md-9">
                     <div class="box">
-                        <h1>Ladies</h1>
+                        <h1>{% if request.path == '/products/' %}
+                                All Products
+                            {% else %}
+                                {{ product.category|title }}
+                            {% endif %}
+                        </h1>
                         <p>In our Ladies department we offer wide selection of the best products we have found and
                             carefully selected worldwide.</p>
                     </div>

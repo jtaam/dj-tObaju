@@ -1,0 +1,29 @@
+{% for recently_product in recently_products %}
+    <div class="col-md-3 col-sm-6">
+        <div class="product same-height" style="height: 380px;">
+            <div class="flip-container">
+                <div class="flipper">
+                    <div class="front">
+                        <a href="{% url 'products:product_detail' recently_product.id %}">
+                            <img src="{{ recently_product.first_image.url }}" alt="{{recently_product.title}}" class="img-responsive">
+                        </a>
+                    </div>
+                    <div class="back">
+                        <a href="{% url 'products:product_detail' recently_product.id %}">
+                            <img src="{{ recently_product.third_image.url }}" alt="{{recently_product.title}}" class="img-responsive">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <a href="{% url 'products:product_detail' recently_product.id %}" class="invisible">
+                <img src="{{ recently_product.second_image.url }}" alt="" class="img-responsive">
+            </a>
+            <div class="text">
+                <h3>{{ recently_product.title|title }}</h3>
+                <p class="price">${{ recently_product.new_price }}</p>
+            </div>
+        </div>
+        <!-- /.product -->
+    </div>
+
+{% endfor %}

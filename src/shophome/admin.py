@@ -1,5 +1,12 @@
 from django.contrib import admin
-from .models import Advantages, TopSlider, GetInspired, TopOffer
+from .models import Advantages, TopSlider, GetInspired, TopOffer, Logo
+
+
+class LogoAdmin(admin.ModelAdmin):
+    list_display = ('name', )
+
+
+admin.site.register(Logo, LogoAdmin)
 
 
 class TopOfferAdmin(admin.ModelAdmin):

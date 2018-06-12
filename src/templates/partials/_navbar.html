@@ -4,8 +4,8 @@
         <div class="navbar-header">
 
             <a class="navbar-brand home" href="{% url 'shophome:homepage' %}" data-animate-hover="bounce">
-                <img src="{% static 'img/logo.png' %}" alt="Obaju logo" class="hidden-xs">
-                <img src="{% static 'img/logo-small.png' %}" alt="Obaju logo" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
+                <img src="{{ logo.image_large.url }}" alt="{{ logo.name }}" class="hidden-xs">
+                <img src="{{ logo.image_small.url }}" alt="{{ logo.name }}" class="visible-xs"><span class="sr-only">Obaju - go to homepage</span>
             </a>
             <div class="navbar-buttons">
                 <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#navigation">

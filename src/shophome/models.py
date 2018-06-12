@@ -1,6 +1,17 @@
 from django.db import models
 
 
+class Logo(models.Model):
+    name = models.CharField(max_length=250, null=True, blank=True)
+    image_large = models.ImageField(upload_to='homepage/logo/%Y/%m/%d/', null=True, blank=True)
+    image_small = models.ImageField(upload_to='homepage/logo/%Y/%m/%d/', null=True, blank=True)
+    create = models.DateTimeField(auto_now_add=True, null=True, blank=True)
+    update = models.DateTimeField(auto_now=True, null=True, blank=True)
+
+    def __str__(self):
+        return self.name
+
+
 class TopOffer(models.Model):
     percentage = models.CharField(max_length=2)
     limit = models.CharField(max_length=5)
