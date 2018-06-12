@@ -6,7 +6,7 @@ from shophome.models import TopOffer
 def products_list(request):
     offer = get_object_or_404(TopOffer)
     brands = Brand.objects.filter(status='published')
-    categories = ProductCategory.objects.all()
+    categories = ProductCategory.objects.filter(status='published')
     colours = Colours.objects.all()
     products = Product.objects.filter(status='published')
     template = 'products/products_list.html'
@@ -22,6 +22,7 @@ def products_list(request):
 
 def product_detail(request, pid):
     offer = get_object_or_404(TopOffer)
+    categories = ProductCategory.objects.filter(status='published')
     brands = Brand.objects.filter(status='published')
     product = get_object_or_404(Product, id=pid)
     colours = Colours.objects.all()
@@ -31,6 +32,7 @@ def product_detail(request, pid):
         'product': product,
         'brands': brands,
         'colours': colours,
+        'categories': categories,
     }
     return render(request, template, context)
 
