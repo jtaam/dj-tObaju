@@ -1,6 +1,6 @@
 from django.shortcuts import render, get_object_or_404
-from .models import TopSlider, Advantages, GetInspired, TopOffer, Logo
-from products.models import Product
+from .models import TopSlider, Advantages, GetInspired, TopOffer, Logo, Faq
+from products.models import Product, Colours, ProductCategory, Brand
 from blog.models import Post
 
 
@@ -22,5 +22,24 @@ def homepage(request):
         'inspires': get_inspired_images,
         'posts': posts,
         'title': 'home page',
+    }
+    return render(request, template, context)
+
+
+def faq(request):
+    faqs = Faq.objects.filter(status='published')
+    logo = get_object_or_404(Logo)
+    offer = get_object_or_404(TopOffer)
+    categories = ProductCategory.objects.filter(status='published')
+    colours = Colours.objects.all()
+    brands = Brand.objects.filter(status='published')
+    template = 'pages/faq.html'
+    context = {
+        'faqs': faqs,
+        'logo': logo,
+        'offer': offer,
+        'categories': categories,
+        'colours': colours,
+        'brands': brands,
     }
     return render(request, template, context)

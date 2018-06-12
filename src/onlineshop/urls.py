@@ -18,6 +18,7 @@ from django.contrib import admin
 from django.views.static import serve
 from django.conf import settings
 
+
 urlpatterns = [
     url(r'', include('shophome.urls', app_name='shophome', namespace='shophome')),
     url(r'^blog/', include('blog.urls', app_name='blog', namespace='blog')),

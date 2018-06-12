@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import Brand, ProductCategory, Colours, Product, CategoryGroup
+from .models import Brand, ProductCategory, Colours, Product, CategoryGroup, ProductShareLinks
 from shophome.models import TopOffer, Logo
 
 
@@ -31,6 +31,7 @@ def product_detail(request, pid):
     products = Product.objects.filter(status='published')[0:3]
     recently_products = Product.objects.filter(status='published')[2:5]
     colours = Colours.objects.all()
+    share_links = ProductShareLinks.objects.all()
     template = 'products/product_detail.html'
     context = {
         'offer': offer,
@@ -40,6 +41,26 @@ def product_detail(request, pid):
         'categories': categories,
         'products': products,
         'recently_products': recently_products,
+        'logo': logo,
+        'share_links': share_links,
+    }
+    return render(request, template, context)
+
+
+def products_list_by_category(request, category):
+    logo = get_object_or_404(Logo)
+    offer = get_object_or_404(TopOffer)
+    brands = Brand.objects.filter(status='published')
+    categories = ProductCategory.objects.filter(status='published')
+    colours = Colours.objects.all()
+    products = Product.objects.filter(category=category)
+    template = 'products/products_list.html'
+    context = {
+        'offer': offer,
+        'products': products,
+        'categories': categories,
+        'colours': colours,
+        'brands': brands,
         'logo': logo,
     }
     return render(request, template, context)

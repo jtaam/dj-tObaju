@@ -75,3 +75,23 @@ class GetInspired(models.Model):
 
     def __str__(self):
         return self.name
+
+
+class Faq(models.Model):
+    STATUS = (
+        ('draft', 'Draft'),
+        ('published', 'Published'),
+    )
+    question = models.TextField(null=True, blank=True)
+    answer = models.TextField(null=True, blank=True)
+    create = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+    status = models.CharField(choices=STATUS, default='draft', max_length=20)
+
+    class Meta:
+        verbose_name = 'FAQ'
+        verbose_name_plural = 'FAQs'
+
+    def __str__(self):
+        return self.question
+

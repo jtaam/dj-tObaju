@@ -1,9 +1,9 @@
 from django.contrib import admin
-from .models import Advantages, TopSlider, GetInspired, TopOffer, Logo
+from .models import Advantages, TopSlider, GetInspired, TopOffer, Logo, Faq
 
 
 class LogoAdmin(admin.ModelAdmin):
-    list_display = ('name', )
+    list_display = ('name',)
 
 
 admin.site.register(Logo, LogoAdmin)
@@ -35,3 +35,10 @@ class GetInspiredAdmin(admin.ModelAdmin):
 
 
 admin.site.register(GetInspired, GetInspiredAdmin)
+
+
+class FaqAdmin(admin.ModelAdmin):
+    list_display = ('question', 'status', 'create')
+
+
+admin.site.register(Faq, FaqAdmin)

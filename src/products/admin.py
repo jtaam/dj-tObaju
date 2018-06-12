@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Brand, CategoryGroup, Colours, ProductCategory, Product
+from .models import Brand, CategoryGroup, Colours, ProductCategory, Product, ProductShareLinks
 
 
 class BrandAdmin(admin.ModelAdmin):
@@ -35,3 +35,11 @@ class ProductAdmin(admin.ModelAdmin):
 
 
 admin.site.register(Product, ProductAdmin)
+
+
+class ProductShareLinksAdmin(admin.ModelAdmin):
+    list_display = ('sitename', 'create', 'update')
+    exclude = ('create', 'update')
+
+
+admin.site.register(ProductShareLinks, ProductShareLinksAdmin)

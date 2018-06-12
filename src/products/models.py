@@ -106,3 +106,22 @@ class Product(models.Model):
     def __str__(self):
         return self.title
 
+
+class ProductShareLinks(models.Model):
+    SITES = (
+        ('facebook', 'Facebook'),
+        ('google-plus', 'Google+'),
+        ('twitter', 'Twitter'),
+        ('email', 'Email'),
+    )
+    sitename = models.CharField(max_length=25, null=True, blank=True, choices=SITES)
+    sharelink = models.URLField(null=True, blank=True, max_length=300)
+    create = models.DateTimeField(null=True, blank=True)
+    update = models.DateTimeField(null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Share Link'
+        verbose_name_plural = 'Share Links'
+
+    def __str__(self):
+        return self.sitename
