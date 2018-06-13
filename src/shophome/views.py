@@ -56,3 +56,25 @@ def contact(request):
         'contactus': contactus,
     }
     return render(request, template, context)
+
+
+def terms_and_conditions(request):
+    logo = get_object_or_404(Logo)
+    offer = get_object_or_404(TopOffer)
+    template = 'pages/terms_and_conditions.html'
+    context = {
+        'logo': logo,
+        'offer': offer,
+    }
+    return render(request, template, context)
+
+
+def about_us(request):
+    logo = get_object_or_404(Logo)
+    offer = get_object_or_404(TopOffer)
+    template = 'pages/about_us.html'
+    context = {
+        'logo': logo,
+        'offer': offer,
+    }
+    return render(request, template, context)

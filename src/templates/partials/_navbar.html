@@ -29,6 +29,8 @@
                 <li {% if request.path == '/' %}class="active"{% endif %}><a href="{% url 'shophome:homepage' %}">Home</a></li>
                 <li {% if request.path == '/products/' %}class="active"{% endif %}><a href="{% url 'products:products_list' %}">Products</a></li>
                 <li {% if request.path == '/blog/' %}class="active"{% endif %}><a href="{% url 'blog:blog_list' %}">Blog</a></li>
+                <li {% if request.path == '/contact/' %}class="active"{% endif %}><a href="{% url 'shophome:contact' %}">Contact Us</a></li>
+                <li {% if request.path == '/about-us/' %}class="active"{% endif %}><a href="{% url 'shophome:about_us' %}">About Us</a></li>
                 <li class="dropdown yamm-fw">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-delay="200">Men
                         <b class="caret"></b></a>
@@ -245,7 +247,7 @@
                                             </li>
                                             <li><a href="{% url 'shophome:faq' %}">FAQ</a>
                                             </li>
-                                            <li><a href="text.html">Text page</a>
+                                            <li><a href="{% url 'shophome:terms_and_conditions' %}">Terms & Conditions</a>
                                             </li>
                                             <li><a href="text-right.html">Text page - right sidebar</a>
                                             </li>
