@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'shophome',
     'blog',
     'products',
+    'dashboard',
 ]
 
 MIDDLEWARE = [
