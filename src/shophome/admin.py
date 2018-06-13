@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Advantages, TopSlider, GetInspired, TopOffer, Logo, Faq, ContactUsPage
+from .models import Advantages, TopSlider, GetInspired, TopOffer, Logo, Faq, ContactUsPage, AboutUs
 
 
 class LogoAdmin(admin.ModelAdmin):
@@ -49,3 +49,10 @@ class ContactUsPageAdmin(admin.ModelAdmin):
 
 
 admin.site.register(ContactUsPage, ContactUsPageAdmin)
+
+
+class AboutUsAdmin(admin.ModelAdmin):
+    list_display = ['title', 'create', 'update']
+
+
+admin.site.register(AboutUs, AboutUsAdmin)

@@ -118,3 +118,21 @@ class ContactUsPage(models.Model):
 
     def __str__(self):
         return self.street
+
+
+class AboutUs(models.Model):
+    title = models.CharField(max_length=250, null=True, blank=True)
+    image_one = models.ImageField(upload_to='about/%Y/%m/%d/', null=True, blank=True)
+    image_two = models.ImageField(upload_to='about/%Y/%m/%d/', null=True, blank=True)
+    image_three = models.ImageField(upload_to='about/%Y/%m/%d/', null=True, blank=True)
+    sub_title = models.CharField(max_length=250, null=True, blank=True)
+    description = models.TextField(null=True, blank=True)
+    create = models.DateTimeField(auto_now_add=True)
+    update = models.DateTimeField(auto_now=True)
+
+    class Meta:
+        verbose_name = 'About Us'
+        verbose_name_plural = 'About Us Info'
+
+    def __str__(self):
+        return self.title

@@ -1,5 +1,5 @@
 from django.shortcuts import render, get_object_or_404
-from .models import TopSlider, Advantages, GetInspired, TopOffer, Logo, Faq, ContactUsPage
+from .models import TopSlider, Advantages, GetInspired, TopOffer, Logo, Faq, ContactUsPage, AboutUs
 from products.models import Product, Colours, ProductCategory, Brand
 from blog.models import Post
 
@@ -70,11 +70,13 @@ def terms_and_conditions(request):
 
 
 def about_us(request):
+    about_us_data = get_object_or_404(AboutUs)
     logo = get_object_or_404(Logo)
     offer = get_object_or_404(TopOffer)
     template = 'pages/about_us.html'
     context = {
         'logo': logo,
         'offer': offer,
+        'about_us_data': about_us_data,
     }
     return render(request, template, context)
