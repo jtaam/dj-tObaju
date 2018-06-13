@@ -45,7 +45,7 @@ admin.site.register(Faq, FaqAdmin)
 
 
 class ContactUsPageAdmin(admin.ModelAdmin):
-    list_display = ['street', 'city', 'call_center_phone']
+    list_display = ['corporate_name', 'street', 'city', 'call_center_phone']
 
 
 admin.site.register(ContactUsPage, ContactUsPageAdmin)

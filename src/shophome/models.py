@@ -97,7 +97,8 @@ class Faq(models.Model):
 
 
 class ContactUsPage(models.Model):
-    street = models.CharField(max_length=100)
+    corporate_name = models.CharField(max_length=100, null=True, blank=True)
+    street = models.CharField(max_length=100, null=True, blank=True)
     city = models.CharField(max_length=100, null=True, blank=True)
     postcode = models.CharField(max_length=12, null=True, blank=True)
     division = models.CharField(max_length=100, null=True, blank=True)

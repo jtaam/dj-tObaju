@@ -40,3 +40,13 @@
 div.product{
     min-height: 384px;
 }
+
+ul.footer_category li {
+    margin: 15px 0;
+}
+
+ul.footer_category a{
+	background-color: #4fbfa8;
+	padding: 5px 8px;
+	color: white !important;
+}
