@@ -27,7 +27,7 @@
                         <td>32.3%</td>
                         <td>{{ category.create }}</td>
                         <td><a href="{% url 'dashboard:edit_blog_category' category.pk %}" class="btn btn-warning btn-sm">Edit</a> <a href="{% url 'dashboard:delete_blog_category' category.pk %}"
-                                                                                    class="btn btn-danger btn-sm">Delete</a>
+                                                                                    class="btn btn-danger btn-sm" onclick="return confirm_delete()">Delete</a>
                         </td>
                     </tr>
                 {% endfor %}

@@ -29,7 +29,7 @@ Blog Posts
                         <td><img src="{{ post.image.url }}" alt="" style="width: 100px; height: auto"/></td>
                         <td>{{ post.category }}</td>
                         <td>{{ post.user }}</td>
-                        <td><a href="" class="btn btn-warning btn-sm">Edit</a> <a href="" class="btn btn-danger btn-sm">Delete</a></td>
+                        <td><a href="{% url 'dashboard:edit_blog_post' post.pk %}" class="btn btn-warning btn-sm">Edit</a> <a href="{% url 'dashboard:delete_blog_post' post.pk %}" class="btn btn-danger btn-sm" onclick="return confirm_delete()">Delete</a></td>
                     </tr>
                 {% endfor %}
 

@@ -79,6 +79,28 @@ def add_post(request):
     return render(request, template, context)
 
 
+def edit_blog_post(request, pid):
+    unique_post = get_object_or_404(Post, pk=pid)
+    form = PostForm(request.POST or None, request.FILES or None, instance=unique_post)
+    if form.is_valid():
+        form.instance.user = request.user
+        form.save()
+        messages.info(request, 'Successfully updated the blog post.')
+        return redirect('/dashboard/posts_list/')
+    template = 'dashboard/blog/post/add-post.html'
+    context = {
+        'form': form,
+    }
+    return render(request, template, context)
+
+
+def delete_blog_post(request, pid):
+    unique_post = get_object_or_404(Post, pk=pid)
+    unique_post.delete()
+    messages.info(request, 'Successfully Deleted the blog post!')
+    return redirect('/dashboard/posts_list/')
+
+
 def posts_list(request):
     posts = Post.objects.all()
     template = 'dashboard/blog/post/posts-list.html'
