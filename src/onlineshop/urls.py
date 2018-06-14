@@ -20,11 +20,11 @@ from django.conf import settings
 
 
 urlpatterns = [
+    url(r'^dashboard/', include('dashboard.urls', app_name='dashboard', namespace='dashboard')),
     url(r'', include('shophome.urls', app_name='shophome', namespace='shophome')),
     url(r'^blog/', include('blog.urls', app_name='blog', namespace='blog')),
     url(r'^admin/', admin.site.urls),
     url(r'^products/', include('products.urls', app_name='products', namespace='products')),
-    url(r'^dashboard/$', include('dashboard.urls', app_name='dashboard', namespace='dashboard')),
 ]
 
 if settings.DEBUG:
