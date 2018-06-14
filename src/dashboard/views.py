@@ -5,8 +5,11 @@ from .forms import PostCategoryForm
 
 
 def dashboard(request):
+    current_user = request.user
     template = 'dashboard/index.html'
-    context = {}
+    context = {
+        'current_user': current_user,
+    }
     return render(request, template, context)
 
 
