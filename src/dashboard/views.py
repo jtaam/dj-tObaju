@@ -1,7 +1,7 @@
 from django.contrib import messages
 from django.shortcuts import render, redirect, get_object_or_404
 from blog.models import PostCategory, Post
-from .forms import PostCategoryForm
+from .forms import PostCategoryForm, PostForm
 
 
 ###############################
@@ -66,8 +66,16 @@ def delete_blog_category(request, cid):
 # Blog Post
 ###############################
 def add_post(request):
+    form = PostForm(request.POST or None, request.FILES or None)
+    if form.is_valid():
+        form.instance.user = request.user
+        form.save()
+        messages.info(request, 'Successfully created a new blog post.')
+        return redirect('/dashboard/posts_list/')
     template = 'dashboard/blog/post/add-post.html'
-    context = {}
+    context = {
+        'form': form,
+    }
     return render(request, template, context)
 
 

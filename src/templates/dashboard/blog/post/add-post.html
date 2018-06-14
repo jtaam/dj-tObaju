@@ -1,10 +1,18 @@
 {% extends 'dashboard/dashboard-base.html' %}
 {% load crispy_forms_tags %}
 {% block title %}
-New Post
+    New Post
 {% endblock %}
 {% block content %}
-
+    <div class="col-md-10 col-md-offset-1">
+        <form action="." method="POST" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form | crispy }}
+            <button type="reset" class="btn btn-warning btn-lg">Reset</button>
+            <a href="{% url 'dashboard:posts_list' %}" class="btn-lg btn btn-default">Cancel</a>
+            <button type="submit" class="btn btn-success btn-lg pull-right">Add</button>
+        </form>
+    </div>
 {% endblock %}
 {% block scripts %}
 {% endblock %}
