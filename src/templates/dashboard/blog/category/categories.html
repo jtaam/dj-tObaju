@@ -1,11 +1,11 @@
 {% extends 'dashboard/dashboard-base.html' %}
 {% block title %}
-Blog Categories
+    Blog Categories
 {% endblock %}
 {% block styles %}
 {% endblock %}
 {% block content %}
-<div class="col-md-10 col-md-offset-1">
+    <div class="col-md-10 col-md-offset-1">
         <h2>Basic Table</h2>
         <div class="table-responsive">
             <table class="table table-hover table-striped">
@@ -19,14 +19,17 @@ Blog Categories
                 </tr>
                 </thead>
                 <tbody>
-
-                <tr>
-                    <td>/index.html</td>
-                    <td>1265</td>
-                    <td>32.3%</td>
-                    <td>$321.33</td>
-                    <td><a href="" class="btn btn-warning btn-sm">Edit</a> | <a href="" class="btn btn-danger btn-sm">Delete</a></td>
-                </tr>
+                {% for category in categories %}
+                    <tr>
+                        <td>{{ category.name }}</td>
+                        <td class="{% if category.status == 'published' %}text-success{% else %}text-info{% endif %}">{{ category.status }}</td>
+                        <td>32.3%</td>
+                        <td>{{ category.create }}</td>
+                        <td><a href="" class="btn btn-warning btn-sm">Edit</a> | <a href=""
+                                                                                    class="btn btn-danger btn-sm">Delete</a>
+                        </td>
+                    </tr>
+                {% endfor %}
 
                 </tbody>
             </table>
