@@ -1,9 +1,12 @@
 from django.contrib import messages
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from blog.models import PostCategory, Post
 from .forms import PostCategoryForm
 
 
+###############################
+# Dashboard index
+###############################
 def dashboard(request):
     current_user = request.user
     template = 'dashboard/index.html'
@@ -13,11 +16,28 @@ def dashboard(request):
     return render(request, template, context)
 
 
+###############################
+# Blog Category
+###############################
 def add_blog_category(request):
     form = PostCategoryForm(request.POST or None, request.FILES or None)
     if form.is_valid():
         form.save()
         messages.info(request, 'Successfully created a new blog category.')
+        return redirect('/dashboard/blog_categories/')
+    template = 'dashboard/blog/category/add-category.html'
+    context = {
+        'form': form
+    }
+    return render(request, template, context)
+
+
+def edit_blog_category(request, cid):
+    unique_category = get_object_or_404(PostCategory, id=cid)
+    form = PostCategoryForm(request.POST or None, request.FILES or None, instance=unique_category)
+    if form.is_valid():
+        form.save()
+        messages.info(request, 'Successfully updated the category.')
         return redirect('/dashboard/blog_categories/')
     template = 'dashboard/blog/category/add-category.html'
     context = {
@@ -35,6 +55,16 @@ def blog_categories(request):
     return render(request, template, context)
 
 
+def delete_blog_category(request, cid):
+    unique_category = get_object_or_404(PostCategory, pk=cid)
+    unique_category.delete()
+    messages.info(request, 'Successfully deleted the blog category.')
+    return redirect('/dashboard/blog_categories/')
+
+
+###############################
+# Blog Post
+###############################
 def add_post(request):
     template = 'dashboard/blog/post/add-post.html'
     context = {}

@@ -6,7 +6,8 @@ Blog Posts
 {% endblock %}
 {% block content %}
 <div class="col-md-12">
-        <h2>Blog Posts</h2>
+        <h2>All Posts <span class="pull-right"><a href="{% url 'dashboard:add_post' %}" class="btn btn-success">New Post</a></span></h2>
+        <hr/>
         <div class="table-responsive">
             <table class="table table-hover table-striped">
                 <thead>
@@ -28,7 +29,7 @@ Blog Posts
                         <td><img src="{{ post.image.url }}" alt="" style="width: 100px; height: auto"/></td>
                         <td>{{ post.category }}</td>
                         <td>{{ post.user }}</td>
-                        <td><a href="" class="btn btn-warning btn-sm">Edit</a> | <a href="" class="btn btn-danger btn-sm">Delete</a></td>
+                        <td><a href="" class="btn btn-warning btn-sm">Edit</a> <a href="" class="btn btn-danger btn-sm">Delete</a></td>
                     </tr>
                 {% endfor %}
 

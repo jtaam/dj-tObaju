@@ -26,7 +26,7 @@
                         <td class="{% if category.status == 'published' %}text-success{% else %}text-info{% endif %}">{{ category.status }}</td>
                         <td>32.3%</td>
                         <td>{{ category.create }}</td>
-                        <td><a href="" class="btn btn-warning btn-sm">Edit</a> | <a href=""
+                        <td><a href="{% url 'dashboard:edit_blog_category' category.pk %}" class="btn btn-warning btn-sm">Edit</a> <a href="{% url 'dashboard:delete_blog_category' category.pk %}"
                                                                                     class="btn btn-danger btn-sm">Delete</a>
                         </td>
                     </tr>
