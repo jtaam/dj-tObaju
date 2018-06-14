@@ -1,4 +1,5 @@
 {% extends 'dashboard/dashboard-base.html' %}
+{% load crispy_forms_tags %}
 {% block title %}
     Add Category
 {% endblock %}
@@ -28,8 +29,10 @@
 {#                    <option value="draft">Draft</option>#}
 {#                </select>#}
 {#            </div>#}
-            {{ form.as_p }}
-            <button type="submit" class="btn btn-primary btn-lg">Add</button>
+            {{ form | crispy }}
+            <button type="reset" class="btn btn-warning btn-lg">Reset</button>
+            <a href="{% url 'dashboard:blog_categories' %}" class="btn-lg btn btn-default">Cancel</a>
+            <button type="submit" class="btn btn-success btn-lg pull-right">Add</button>
         </form>
         <br/>
         <br/>
