@@ -10,25 +10,6 @@
         <h1>Add Category</h1>
         <form action="." method="POST" enctype="multipart/form-data">
         {% csrf_token %}
-{#            <div class="form-group">#}
-{#                <label>Name</label>#}
-{#                <input class="form-control" name="name">#}
-{#            </div>#}
-{#            <div class="form-group">#}
-{#                <label>Description</label>#}
-{#                <textarea class="form-control" rows="3" name="description"></textarea>#}
-{#            </div>#}
-{#            <div class="form-group">#}
-{#                <label>Upload Image</label>#}
-{#                <input type="file">#}
-{#            </div>#}
-{#            <div class="form-group">#}
-{#                <label>Status</label>#}
-{#                <select class="form-control">#}
-{#                    <option value="published">Published</option>#}
-{#                    <option value="draft">Draft</option>#}
-{#                </select>#}
-{#            </div>#}
             {{ form | crispy }}
             <input type="reset" value="Reset" class="btn btn-warning btn-lg" />
             <a href="{% url 'dashboard:blog_categories' %}" >
