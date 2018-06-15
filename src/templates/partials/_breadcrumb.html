@@ -1,4 +1,11 @@
 <ul class="breadcrumb">
     <li><a href="{% url 'shophome:homepage' %}">Home</a></li>
     <li>Blog listing</li>
+
+    {% if messages %}
+        {% for message in messages %}
+            <span{% if message.tags %} class="info-message bg-success"{% endif %}> :- {{ message }}</span>
+        {% endfor %}
+    {% endif %}
+
 </ul>
