@@ -137,3 +137,18 @@ class AboutUs(models.Model):
 
     def __str__(self):
         return self.title
+
+
+class StayInTouch(models.Model):
+    facebook = models.URLField(null=True, blank=True)
+    twitter = models.URLField(null=True, blank=True)
+    instagram = models.URLField(null=True, blank=True)
+    googleplus = models.URLField(null=True, blank=True)
+    emailus = models.CharField(max_length=100, null=True, blank=True)
+
+    class Meta:
+        verbose_name = 'Stay In Touch'
+        verbose_name_plural = 'Stay In Touch'
+
+    def __str__(self):
+        return self.twitter

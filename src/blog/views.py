@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Post
-from shophome.models import TopOffer, Logo, ContactUsPage
+from shophome.models import TopOffer, Logo, ContactUsPage, StayInTouch
 from products.models import ProductCategory
 
 
 def blog_list(request):
+    stayintouch = get_object_or_404(StayInTouch)
     categories = ProductCategory.objects.filter(status='published')
     contactus = get_object_or_404(ContactUsPage)
     logo = get_object_or_404(Logo)
@@ -12,6 +13,7 @@ def blog_list(request):
     posts = Post.objects.filter(status='published').order_by('-create')
     template = 'blog/blog_list.html'
     context = {
+        'stayintouch': stayintouch,
         'offer': offer,
         'posts': posts,
         'logo': logo,
@@ -22,6 +24,7 @@ def blog_list(request):
 
 
 def blog_detail(request, pid):
+    stayintouch = get_object_or_404(StayInTouch)
     categories = ProductCategory.objects.filter(status='published')
     contactus = get_object_or_404(ContactUsPage)
     logo = get_object_or_404(Logo)
@@ -29,6 +32,7 @@ def blog_detail(request, pid):
     post = get_object_or_404(Post, id=pid)
     template = 'blog/blog_detail.html'
     context = {
+        'stayintouch': stayintouch,
         'offer': offer,
         'post': post,
         'logo': logo,

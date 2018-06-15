@@ -1,5 +1,5 @@
 from django.contrib import admin
-from .models import Advantages, TopSlider, GetInspired, TopOffer, Logo, Faq, ContactUsPage, AboutUs
+from .models import Advantages, TopSlider, GetInspired, TopOffer, Logo, Faq, ContactUsPage, AboutUs, StayInTouch
 
 
 class LogoAdmin(admin.ModelAdmin):
@@ -56,3 +56,10 @@ class AboutUsAdmin(admin.ModelAdmin):
 
 
 admin.site.register(AboutUs, AboutUsAdmin)
+
+
+class StayInTouchAdmin(admin.ModelAdmin):
+    list_display = ['facebook', 'twitter', 'emailus']
+
+
+admin.site.register(StayInTouch, StayInTouchAdmin)

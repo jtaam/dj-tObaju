@@ -24,7 +24,7 @@ Blog Posts
 
                 {% for post in posts %}
                     <tr>
-                        <td>{{ post.title }}</td>
+                        <td><a href="{% url 'blog:blog_detail' post.pk %}" target="_blank">{{ post.title }}</a></td>
                         <td class="{% if post.status == 'published' %}text-success{% else %}text-info{% endif %}">{{ post.status }}</td>
                         <td><img src="{{ post.image.url }}" alt="" style="width: 100px; height: auto"/></td>
                         <td>{{ post.category }}</td>

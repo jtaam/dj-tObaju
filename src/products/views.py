@@ -1,9 +1,10 @@
 from django.shortcuts import render, get_object_or_404
 from .models import Brand, ProductCategory, Colours, Product, CategoryGroup, ProductShareLinks
-from shophome.models import TopOffer, Logo, ContactUsPage
+from shophome.models import TopOffer, Logo, ContactUsPage, StayInTouch
 
 
 def products_list(request):
+    stayintouch = get_object_or_404(StayInTouch)
     contactus = get_object_or_404(ContactUsPage)
     logo = get_object_or_404(Logo)
     offer = get_object_or_404(TopOffer)
@@ -13,6 +14,7 @@ def products_list(request):
     products = Product.objects.filter(status='published')
     template = 'products/products_list.html'
     context = {
+        'stayintouch': stayintouch,
         'offer': offer,
         'products': products,
         'categories': categories,
@@ -25,6 +27,7 @@ def products_list(request):
 
 
 def product_detail(request, pid):
+    stayintouch = get_object_or_404(StayInTouch)
     contactus = get_object_or_404(ContactUsPage)
     logo = get_object_or_404(Logo)
     offer = get_object_or_404(TopOffer)
@@ -37,6 +40,7 @@ def product_detail(request, pid):
     share_links = ProductShareLinks.objects.all()
     template = 'products/product_detail.html'
     context = {
+        'stayintouch': stayintouch,
         'offer': offer,
         'product': product,
         'brands': brands,
@@ -52,6 +56,7 @@ def product_detail(request, pid):
 
 
 def products_list_by_category(request, category):
+    stayintouch = get_object_or_404(StayInTouch)
     contactus = get_object_or_404(ContactUsPage)
     logo = get_object_or_404(Logo)
     offer = get_object_or_404(TopOffer)
@@ -61,6 +66,7 @@ def products_list_by_category(request, category):
     products = Product.objects.filter(category=category)
     template = 'products/products_list.html'
     context = {
+        'stayintouch': stayintouch,
         'offer': offer,
         'products': products,
         'categories': categories,
@@ -73,11 +79,13 @@ def products_list_by_category(request, category):
 
 
 def brands_list(request):
+    stayintouch = get_object_or_404(StayInTouch)
     contactus = get_object_or_404(ContactUsPage)
     logo = get_object_or_404(Logo)
     brands = Brand.objects.filter(status='published')
     template = 'products/brand/brands_list.html'
     context = {
+        'stayintouch': stayintouch,
         'brands': brands,
         'logo': logo,
         'contactus': contactus,
@@ -86,11 +94,13 @@ def brands_list(request):
 
 
 def brand_detail(request, slug):
+    stayintouch = get_object_or_404(StayInTouch)
     contactus = get_object_or_404(ContactUsPage)
     logo = get_object_or_404(Logo)
     brand = get_object_or_404(Brand, slug=slug)
     template = 'products/brand/brand_detail.html'
     context = {
+        'stayintouch': stayintouch,
         'brand': brand,
         'logo': logo,
         'contactus': contactus,

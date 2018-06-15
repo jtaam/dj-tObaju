@@ -1,10 +1,11 @@
 from django.shortcuts import render, get_object_or_404
-from .models import TopSlider, Advantages, GetInspired, TopOffer, Logo, Faq, ContactUsPage, AboutUs
+from .models import TopSlider, Advantages, GetInspired, TopOffer, Logo, Faq, ContactUsPage, AboutUs, StayInTouch
 from products.models import Product, Colours, ProductCategory, Brand
 from blog.models import Post
 
 
 def homepage(request):
+    stayintouch = get_object_or_404(StayInTouch)
     contactus = get_object_or_404(ContactUsPage)
     logo = get_object_or_404(Logo)
     offer = get_object_or_404(TopOffer)
@@ -16,7 +17,7 @@ def homepage(request):
     posts = Post.objects.filter(status='published')[0:2]
     template = 'homepage/homepage.html'
     context = {
-
+        'stayintouch': stayintouch,
         'logo': logo,
         'offer': offer,
         'sliders': sliders,
@@ -32,6 +33,7 @@ def homepage(request):
 
 
 def faq(request):
+    stayintouch = get_object_or_404(StayInTouch)
     categories = ProductCategory.objects.filter(status='published')
     contactus = get_object_or_404(ContactUsPage)
     faqs = Faq.objects.filter(status='published')
@@ -42,6 +44,7 @@ def faq(request):
     brands = Brand.objects.filter(status='published')
     template = 'pages/faq.html'
     context = {
+        'stayintouch': stayintouch,
         'faqs': faqs,
         'logo': logo,
         'offer': offer,
@@ -55,12 +58,14 @@ def faq(request):
 
 
 def contact(request):
+    stayintouch = get_object_or_404(StayInTouch)
     categories = ProductCategory.objects.filter(status='published')
     contactus = get_object_or_404(ContactUsPage)
     logo = get_object_or_404(Logo)
     offer = get_object_or_404(TopOffer)
     template = 'contact/contact.html'
     context = {
+        'stayintouch': stayintouch,
         'logo': logo,
         'offer': offer,
         'contactus': contactus,
@@ -70,12 +75,14 @@ def contact(request):
 
 
 def terms_and_conditions(request):
+    stayintouch = get_object_or_404(StayInTouch)
     categories = ProductCategory.objects.filter(status='published')
     contactus = get_object_or_404(ContactUsPage)
     logo = get_object_or_404(Logo)
     offer = get_object_or_404(TopOffer)
     template = 'pages/terms_and_conditions.html'
     context = {
+        'stayintouch': stayintouch,
         'logo': logo,
         'offer': offer,
         'contactus': contactus,
@@ -85,6 +92,7 @@ def terms_and_conditions(request):
 
 
 def about_us(request):
+    stayintouch = get_object_or_404(StayInTouch)
     categories = ProductCategory.objects.filter(status='published')
     contactus = get_object_or_404(ContactUsPage)
     about_us_data = get_object_or_404(AboutUs)
@@ -92,6 +100,7 @@ def about_us(request):
     offer = get_object_or_404(TopOffer)
     template = 'pages/about_us.html'
     context = {
+        'stayintouch': stayintouch,
         'logo': logo,
         'offer': offer,
         'about_us_data': about_us_data,
