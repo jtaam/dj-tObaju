@@ -11,28 +11,6 @@ from newsletter.models import Newsletter, NewsletterUser
 from newsletter.forms import NewsletterUserSignUpForm
 
 
-def subscription_mail(tkeyword):
-    form = NewsletterUserSignUpForm(tkeyword.POST or None)
-    if form.is_valid():
-        instance = form.save(commit=False)
-        if NewsletterUser.objects.filter(email=instance.email).exists():
-            messages.warning(tkeyword, 'Your Email Already Exists in our Database!',
-                             'alert alert-warning alert-dismissible')
-        else:
-            instance.save()
-            messages.success(tkeyword, 'Your Email subscribed successfully!', 'alert alert-success alert-dismissible')
-            # Send Email
-            subject = 'Thank your for joining our Newsletter'
-            from_email = settings.EMAIL_HOST_USER
-            to_email = [instance.email]
-            with open(settings.BASE_DIR + "/templates/newsletters/sign_up_email.txt") as f:
-                signup_message = f.read()
-            message = EmailMultiAlternatives(subject=subject, body=signup_message, from_email=from_email, to=to_email)
-            html_template = get_template("newsletters/sign_up_email.html").render()
-            message.attach_alternative(html_template, "text/html")
-            message.send()
-
-
 def products_list(request):
     stayintouch = get_object_or_404(StayInTouch)
     contactus = get_object_or_404(ContactUsPage)
