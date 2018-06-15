@@ -37,12 +37,15 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    # plugins
     'multiselectfield',
     'crispy_forms',
+    # site apps
     'shophome',
     'blog',
     'products',
     'dashboard',
+    'newsletter',
 ]
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'
@@ -133,3 +136,9 @@ STATICFILES_DIRS = [
 # Media
 MEDIA_URL = '/media/'
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+
+# Extra settings
+try:
+    from .local_settings import *
+except ImportError:
+    print('Local settings failed!')
